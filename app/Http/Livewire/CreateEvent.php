@@ -33,6 +33,7 @@ class CreateEvent extends Component
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
+        // Get the currently authenticated user (organizer)
         $organizer = Auth::user();
 
         $eventData = [
@@ -43,7 +44,7 @@ class CreateEvent extends Component
             'venue' => $this->venue,
             'description' => $this->description,
             'status' => $this->status,
-            'organizer_id' => $organizer->id,
+            'organizer_id' => $organizer->id, // Use the organizer's ID
         ];
 
         if ($this->thumbnail) {
@@ -56,6 +57,7 @@ class CreateEvent extends Component
         session()->flash('success', 'Event created successfully.');
         return redirect('/events');
     }
+
 
     public function render()
     {

@@ -39,11 +39,15 @@ class Register extends Component
 
         auth()->login($user);
 
-        if (auth()->check() && auth()->user()->role === User::ROLE_ADMIN) {
-            return redirect()->intended('/dashboard');
+        if (auth()->user()->role === User::ROLE_ORGANIZER) {
+            // Redirect to the organizer dashboard where they can see their events
+            return redirect('/dashboard');
+        } elseif (auth()->user()->role === User::ROLE_ADMIN) {
+            // Redirect to the admin dashboard
+            return redirect('/dashboard');
         } else {
-            session()->flash('error', 'You do not have the necessary privileges to access the dashboard.');
-            return redirect('/login');
+            // Redirect to a different dashboard for regular users
+            return redirect('/welcome');
         }
     }
 

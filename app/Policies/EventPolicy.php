@@ -18,7 +18,7 @@ class EventPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->role === User::ROLE_ADMIN || $user->role === User::ROLE_ORGANIZER;
     }
 
     /**
@@ -30,7 +30,8 @@ class EventPolicy
      */
     public function view(User $user, Event $event)
     {
-        //
+        // Allow an admin or the organizer of the event to view
+        return $user->role === User::ROLE_ADMIN || $user->id === $event->organizer_id;
     }
 
     /**
@@ -41,7 +42,8 @@ class EventPolicy
      */
     public function create(User $user)
     {
-        //
+        // Allow an admin or an organizer to create events
+        return $user->role === User::ROLE_ADMIN || $user->role === User::ROLE_ORGANIZER;
     }
 
     /**
@@ -53,7 +55,8 @@ class EventPolicy
      */
     public function update(User $user, Event $event)
     {
-        //
+        // Allow an admin or the organizer of the event to update
+        return $user->role === User::ROLE_ADMIN || $user->id === $event->organizer_id;
     }
 
     /**
@@ -65,7 +68,8 @@ class EventPolicy
      */
     public function delete(User $user, Event $event)
     {
-        return  $user?->id === $event->organizer_id;
+        // Allow an admin or the organizer of the event to delete
+        return $user->role === User::ROLE_ADMIN || $user->id === $event->organizer_id;
     }
 
     /**
@@ -77,7 +81,8 @@ class EventPolicy
      */
     public function restore(User $user, Event $event)
     {
-        //
+        // Allow an admin or the organizer of the event to restore
+        return $user->role === User::ROLE_ADMIN || $user->id === $event->organizer_id;
     }
 
     /**
@@ -89,6 +94,7 @@ class EventPolicy
      */
     public function forceDelete(User $user, Event $event)
     {
-        //
+        // Allow an admin or the organizer of the event to force delete
+        return $user->role === User::ROLE_ADMIN || $user->id === $event->organizer_id;
     }
 }
