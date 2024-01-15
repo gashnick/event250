@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
+use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -20,7 +21,7 @@ class Events extends Component
         $this->authorize('viewAny', Event::class);
 
         // Check if the authenticated user is an admin
-        $isAdmin = Auth::check() && Auth::user()->role === 'Admin';
+        $isAdmin = Auth::check() && Auth::user()->role === User::ROLE_ADMIN;
 
         // Fetch events based on the user's role
         $this->events = $isAdmin
@@ -42,5 +43,9 @@ class Events extends Component
         $event->delete();
 
         session()->flash('success', 'Event deleted successfully.');
+    }
+    public function displayEvents()
+    {
+        $this->events = Event::all();
     }
 }
