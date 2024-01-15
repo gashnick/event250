@@ -1,9 +1,14 @@
 <main>
-    <title>Register</title>
+    <title>Login</title>
     <!-- Section -->
     <div>
         <!-- Section: Design Block -->
         <section class="background-radial-gradient overflow-hidden">
+            <div class="container position-relative">
+                <a class="navbar-brand position-absolute top-0 start-0 mt-1" href="/">
+                    <img src="assets/img/logos/logo.png" alt="..." width="250" />
+                </a>
+            </div>
             <style>
                 .background-radial-gradient {
                     background-color: hsl(218, 41%, 15%);
@@ -67,6 +72,7 @@
 
                         <div class="card bg-glass">
                             <div class="card-body px-4 py-5 px-md-5">
+                                <h3>Log Into Your Account</h3>
                                 <div class="card bg-glass">
                                     <div class="card-body px-4 py-5 px-md-5">
                                         <form wire:submit.prevent="login">

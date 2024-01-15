@@ -14,9 +14,6 @@
                 </svg>
                 New User
             </a>
-            <div class="btn-group ms-2 ms-lg-3">
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
-            </div>
         </div>
     </div>
     <div class="table-settings mb-4">
@@ -34,15 +31,6 @@
         </div>
     </div>
     <div class="card card-body shadow border-0 table-wrapper table-responsive">
-        <div class="d-flex mb-3">
-            <select class="form-select fmxw-200" aria-label="Message select example">
-                <option selected>Display Users</option>
-                <option value="1">Send Email</option>
-                <option value="2">View User</option>
-                <option value="3">Delete User</option>
-            </select>
-            <button wire:click="applyAction" class="btn btn-sm px-3 btn-secondary ms-3">Apply</button>
-        </div>
         <table class="table user-table table-hover align-items-center">
             <thead>
                 <tr>

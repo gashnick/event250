@@ -25,7 +25,6 @@ class Register extends Component
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
-            'terms' => 'accepted',
         ]);
 
         $userRole = User::ROLE_USER;

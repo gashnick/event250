@@ -14,9 +14,6 @@
             <a href="{{ route('create-events')}}" class="btn btn-sm btn-gray-800 d-inline-flex align-items-center">
                 Add New Event
             </a>
-            <div class="btn-group ms-2 ms-lg-3">
-                <button type="button" class="btn btn-sm btn-outline-gray-600">Export</button>
-            </div>
         </div>
     </div>
     <div class="table-settings mb-4">

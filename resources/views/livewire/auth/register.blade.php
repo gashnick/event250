@@ -4,6 +4,11 @@
      <div>
          <!-- Section: Design Block -->
          <section class="background-radial-gradient overflow-hidden">
+             <div class="container position-relative">
+                 <a class="navbar-brand position-absolute top-0 start-0 mt-1" href="/">
+                     <img src="assets/img/logos/logo.png" alt="..." width="250" />
+                 </a>
+             </div>
              <style>
                  .background-radial-gradient {
                      background-color: hsl(218, 41%, 15%);
