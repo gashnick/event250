@@ -24,10 +24,8 @@ return new class extends Migration
             $table->string('thumbnail')->nullable();
             $table->string('status');
             $table->timestamps();
-
-            // Foreign key relationship
-            $table->bigInteger('organizer_id')->unsigned();
-            $table->foreign('organizer_id')->references('id')->on('organizers')->onDelete('cascade');
+            $table->unsignedBigInteger('organizer_id');
+            $table->foreign('organizer_id')->references('id')->on('organizers');
         });
     }
 

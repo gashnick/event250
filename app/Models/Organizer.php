@@ -12,7 +12,7 @@ class Organizer extends Model
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'contact_number',
+        'name', 'email', 'password', 'contact_number', 'user_id',
     ];
     public function user(): BelongsTo
     {

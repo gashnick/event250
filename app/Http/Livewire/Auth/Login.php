@@ -27,9 +27,9 @@ class Login extends Component
 
         if (Auth::attempt($credentials)) {
             $this->redirectUser();
+            $this->emit('showSuccess', trans('auth.login_success'));
         }
 
-        // Display error using SweetAlert2
         session()->flash('error', trans('auth.failed'));
         $this->emit('showError', trans('auth.failed'));
     }
@@ -37,13 +37,10 @@ class Login extends Component
     private function redirectUser()
     {
         if (auth()->user()->role === User::ROLE_ORGANIZER) {
-            // Redirect to the organizer dashboard where they can see their events
             return redirect('/dashboard');
         } elseif (auth()->user()->role === User::ROLE_ADMIN) {
-            // Redirect to the admin dashboard
             return redirect('/dashboard');
         } else {
-            // Redirect to a different dashboard for regular users
             return redirect('/welcome');
         }
     }

@@ -87,4 +87,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/edit-event/{eventId}', EditEvent::class);
     Route::get('/view-event-details/{eventId}', ViewEventDetails::class)->name('event-details');
     Route::get('/view-user-details/{userId}', ViewUserDetails::class)->name('user-details');
+    Route::get('/profile', Profile::class)->name('profile');
 });

@@ -77,9 +77,15 @@
                                     Edit User
                                 </a>
 
-                                <a wire:click="deleteUser" class="dropdown-item text-danger d-flex align-items-center" href="#">
-                                    <span class="fas fa-user-times me-2"></span>
-                                    Delete user
+                                <a class="dropdown-item d-flex align-items-center">
+                                    @foreach ($users as $user)
+                                    <li>
+                                        {{ $user->name }}
+                                        @can('delete', $user)
+                                        <button wire:click="deleteUser({{ $user->id }})">Delete</button>
+                                        @endcan
+                                    </li>
+                                    @endforeach
                                 </a>
                             </div>
 

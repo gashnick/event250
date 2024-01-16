@@ -19,6 +19,8 @@ class CreateOrganizersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('contact_number')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

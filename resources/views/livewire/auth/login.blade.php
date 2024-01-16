@@ -75,7 +75,9 @@
                                 <h3>Log Into Your Account</h3>
                                 <div class="card bg-glass">
                                     <div class="card-body px-4 py-5 px-md-5">
+                                        <div id="liveAlertPlaceholder"></div>
                                         <form wire:submit.prevent="login">
+                                            <div id="liveAlertPlaceholder"></div>
                                             <!-- Email input -->
                                             <div class="form-outline mb-4">
                                                 <input wire:model="email" type="email" id="form3Example3" class="form-control" />
@@ -92,7 +94,7 @@
 
 
                                             <!-- Submit button -->
-                                            <button type="submit" class="btn btn-primary btn-block mb-4">
+                                            <button type="submit" class="btn btn-primary btn-block mb-4" id="liveAlertBtn">
                                                 Sign in
                                             </button>
 
@@ -124,4 +126,43 @@
                 </div>
         </section>
     </div>
+    <!-- Include SweetAlert2 library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        document.addEventListener('livewire:load', function() {
+            const alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+
+            const appendAlert = (message, type) => {
+                const wrapper = document.createElement('div');
+                wrapper.innerHTML = [
+                    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                    `   <div>${message}</div>`,
+                    '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+                    '</div>'
+                ].join('');
+
+                alertPlaceholder.innerHTML = '';
+                alertPlaceholder.append(wrapper);
+            };
+
+            Livewire.on('showError', message => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: message,
+                });
+            });
+
+            Livewire.on('showSuccess', message => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: message,
+                });
+            });
+        });
+    </script>
+
+
 </main>
