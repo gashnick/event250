@@ -2,9 +2,9 @@
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Portfolio</h2>
+            <h2 class="section-heading text-uppercase">Featured Events</h2>
             <h3 class="section-subheading text-muted">
-                Learn more about our services.
+                View more Featured Events
             </h3>
         </div>
         <div class="row">
@@ -21,7 +21,9 @@
                     </a>
                     <div class="portfolio-caption">
                         <div class="portfolio-caption-heading">{{ $event->name }}</div>
-                        <div class="portfolio-caption-subheading text-muted">{{ $event->description }}</div>
+                        <div class="portfolio-caption-subheading text-muted">
+                            {{ \Carbon\Carbon::parse($event->date . ' ' . $event->time)->format('l, F j, Y g:i A') }}
+                        </div>
                     </div>
                 </div>
             </div>

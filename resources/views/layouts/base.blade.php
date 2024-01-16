@@ -98,20 +98,22 @@
 
 
     <!-- Vendor JS -->
-    <script src="/assets/js/on-screen.umd.min.js"></script>
+    <!-- on-screen -->
+    <script src="{{ asset('/assets/js/on-screen.umd.min.js') }}"></script>
 
     <!-- Slider -->
-    <script src="/assets/js/nouislider.min.js"></script>
+    <script src="{{ asset('/assets/js/nouislider.min.js') }}"></script>
 
     <!-- Smooth scroll -->
-    <script src="/assets/js/smooth-scroll.polyfills.min.js"></script>
+    <script src="{{ asset('/assets/js/smooth-scroll.polyfills.min.js') }}"></script>
 
     <!-- Apex Charts -->
-    <script src="/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="{{ asset('/vendor/apexcharts/apexcharts.min.js') }}"></script>
 
     <!-- Charts -->
-    <script src="/assets/js/chartist.min.js"></script>
-    <script src="/assets/js/chartist-plugin-tooltip.min.js"></script>
+    <script src="{{ asset('/assets/js/chartist.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/chartist-plugin-tooltip.min.js') }}"></script>
+
 
     <!-- Datepicker -->
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker.min.js"></script>

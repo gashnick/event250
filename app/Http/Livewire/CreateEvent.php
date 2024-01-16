@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Event;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -16,8 +17,8 @@ class CreateEvent extends Component
     public $time;
     public $date;
     public $venue;
-    public $description;
     public $status;
+    public $description;
     public $thumbnail;
 
     public function saveEvent()
@@ -32,10 +33,9 @@ class CreateEvent extends Component
             'status' => 'required|string',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
         // Get the currently authenticated user (organizer)
         $organizer = Auth::user();
-
+        $this->calculateStatus();
         $eventData = [
             'name' => $this->name,
             'type' => $this->type,
@@ -56,6 +56,20 @@ class CreateEvent extends Component
 
         session()->flash('success', 'Event created successfully.');
         return redirect('/events');
+    }
+    private function calculateStatus()
+    {
+        $eventDateTime = Carbon::parse($this->date . ' ' . $this->time);
+
+        if ($eventDateTime->isToday()) {
+            $this->status = 'Today';
+        } elseif ($eventDateTime->isPast()) {
+            $this->status = 'Ongoing';
+        } elseif ($eventDateTime->isFuture()) {
+            $this->status = 'Coming soon';
+        } else {
+            $this->status = 'Undefined status';
+        }
     }
 
 

@@ -16,42 +16,22 @@ class OrganizerUserSeeder extends Seeder
 
         if (!$organizerExists) {
             // Create the first organizer
-            $organizer1 = Organizer::create([
-                'names' => 'User Organizer',
+            $organizer = Organizer::create([
+                'name' => 'User Organizer',
                 'email' => 'organizer@example.com',
                 'password' => Hash::make('organizer'),
                 'contact_number' => '0785653425',
+                'user_id' => 1,
             ]);
 
             // Create a corresponding user for the first organizer
-            $user1 = $organizer1->user()->create([
-                'names' => $organizer1->names,
-                'email' => $organizer1->email,
-                'password' => $organizer1->password,
+            $user = $organizer->user()->create([
+                'names' => $organizer->name,
+                'email' => $organizer->email,
+                'password' => $organizer->password,
                 'role' => User::ROLE_ORGANIZER,
                 'remember_token' => Str::random(10),
             ]);
-
-            //$organizer1->update(['userId' => $user1->id]);
-
-            // Create the second organizer
-            $organizer2 = Organizer::create([
-                'names' => 'Admin User',
-                'email' => 'admin@example.com',
-                'password' => Hash::make('organizer'),
-                'contact_number' => '0785653425',
-            ]);
-
-            // Create a corresponding user for the second organizer
-            $user2 = $organizer2->user()->create([
-                'names' => $organizer2->names,
-                'email' => $organizer2->email,
-                'password' => $organizer2->password,
-                'role' => User::ROLE_ORGANIZER,
-                'remember_token' => Str::random(10),
-            ]);
-
-            // $organizer2->update(['userId' => $user2->id]);
         }
     }
 }

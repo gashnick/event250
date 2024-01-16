@@ -40,17 +40,6 @@
         </div>
 
         <div class="mb-3">
-            <label for="status" class="form-label">Status</label>
-            <select wire:model="status" class="form-select" id="status" required>
-                <option value="">Select Status</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-                <!-- Add more status options as needed -->
-            </select>
-            @error('status') <span class="text-danger">{{ $message }}</span> @enderror
-        </div>
-
-        <div class="mb-3">
             <label for="thumbnail" class="form-label">Thumbnail</label>
             <input type="file" wire:model="thumbnail" class="form-control" id="thumbnail">
             @error('thumbnail') <span class="text-danger">{{ $message }}</span> @enderror
